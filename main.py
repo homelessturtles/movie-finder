@@ -21,7 +21,6 @@ def remove_newlines(string):
     return string.replace('\n', '').replace('\r', '')
 
 
-
 for movieName in movies:
     movieName = movieName.replace(" ", "-")
     url = "https://imsdb.com/scripts/title.html"
@@ -30,7 +29,8 @@ for movieName in movies:
   
     result = requests.get(url, headers=headers)
     
-    soup = BeautifulSoup(result.text, "lxml")
+    soup = BeautifulSoup(result.text, "html.parser")
+    
     
     script = str(soup.find(class_ = "scrtext"))
     script = script.replace("</b>", " ")
@@ -59,3 +59,4 @@ getting common movies from actors
 
 parse through script 
 '''
+
